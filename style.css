@@ -1,0 +1,317 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#fff;
+  --card:#f7f6f3;
+  --text:#1a1a18;
+  --text-light:#6b6b66;
+  --border:rgba(255,255,255,.25);
+  --radius:12px;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background: linear-gradient(
+    135deg,
+    #8ebfff 0%,
+    #cacbff 50%,
+    #cdffe9 100%
+  );
+  color:var(--text);
+  min-height:100vh;
+  padding:2rem;
+}
+
+/* APP */
+.app{
+  max-width:800px;
+  margin:auto;
+}
+
+/* HEADER */
+.toolbar{
+  text-align:center;
+  margin-bottom:2rem;
+  cursor:default;
+}
+
+.toolbar-title{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;
+  font-weight:700;
+  color:white;
+  text-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+/* GRID */
+.envelopes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:20px;
+}
+
+/* ENVELOPES */
+.envelope-card{
+  padding:1rem;
+  text-align:center;
+  cursor:pointer;
+
+  border-radius:24px;
+
+  background:rgba(255,255,255,.18);
+
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+
+  border:1px solid rgba(255,255,255,.25);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.35);
+
+  transition:all .25s ease;
+}
+
+.envelope-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  background:rgba(255,255,255,.25);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.12),
+    0 0 20px rgba(255,255,255,.4),
+    inset 0 1px 0 rgba(255,255,255,.45);
+}
+
+/* IMAGEN SOBRE */
+.envelope-image{
+  width:110px;
+  height:auto;
+  object-fit:contain;
+  transition:.3s;
+}
+
+.locked .envelope-image{
+  filter: grayscale(100%) brightness(0.85);
+}
+
+.label{
+  display:block;
+}
+
+/* FECHA */
+.unlock-date{
+  display:block;
+  margin-top:.3rem;
+  font-size:12px;
+  color:var(--text-light);
+}
+
+/* MODAL */
+.modal-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-bg.open{
+  display:flex;
+}
+
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);
+}
+
+/* CARTA */
+.modal{
+  position:relative;
+  z-index:1;
+
+  width:min(600px,90vw);
+  padding:1.2rem;
+
+  max-height:90vh;
+  overflow-y:auto;
+
+  border-radius:24px;
+
+  background:rgba(255,255,255,.18);
+
+  backdrop-filter:blur(25px) saturate(180%);
+  -webkit-backdrop-filter:blur(25px) saturate(180%);
+
+  border:1px solid rgba(255,255,255,.3);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.15),
+    inset 0 1px 0 rgba(255,255,255,.4);
+
+  animation:openLetter .35s ease;
+}
+
+@keyframes openLetter{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* TITULO CARTA */
+#letter-title{
+  font-family:'Inter',serif;
+  font-size:1.75rem;
+  color:#000;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+/* TEXTO CARTA */
+.letter-paper{
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:18px;
+  padding:1.5rem;
+  margin-top:10px;
+  line-height:1.8;
+  font-size:1.05rem;
+  white-space:pre-wrap;
+}
+
+/* FECHA */
+#letter-date{
+  text-align:right;
+  font-style:italic;
+  color:rgba(255,255,255,.9);
+  margin-bottom:1rem;
+}
+
+/* BOTON */
+.modal-footer{
+  text-align:center;
+}
+
+.btn-cancel{
+  background:rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.3);
+  color:white;
+  padding:.8rem 1.5rem;
+  border-radius:14px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:.2s;
+}
+
+.btn-cancel:hover{
+  background:rgba(255,255,255,.35);
+  transform:translateY(-2px);
+}
+
+/* LOCK */
+.lock-big{
+  font-size:42px;
+  margin-bottom:10px;
+  text-align:center;
+}
+
+/* QUIZ */
+#quiz-container{
+  margin-top:0;
+}
+
+.quiz-card{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+
+  padding:10px;
+  text-align:center;
+  animation:openLetter .3s ease;
+}
+
+/* quitar TODOS los márgenes raros */
+.quiz-card h1,
+.quiz-card h2,
+.quiz-card h3,
+.quiz-card p{
+  margin:0;
+}
+
+/* progreso */
+.quiz-progress{
+  font-size:13px;
+  color:#666;
+  margin:0;
+}
+
+/* título pregunta */
+.quiz-title{
+  color:#222;
+  font-size:1.2rem;
+  line-height:1.3;
+  text-align:left
+}
+
+/* opciones */
+.quiz-options{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:5px;
+}
+
+.quiz-btn{
+  width:100%;
+  border:none;
+  border-radius:12px;
+  padding:10px;
+  cursor:pointer;
+  background:white;
+  font-size:14px;
+  transition:.2s;
+  text-align:left;
+}
+
+.quiz-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 12px rgba(0,0,0,.1);
+}
+
+.quiz-otv{
+  color:black;
+  padding:.8rem 1.5rem;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s;
+  background:white;
+}
+
+.quiz-otv:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 12px rgba(0,0,0,.1);
+}
+
+/* resultado */
+.quiz-result{
+  text-align:center;
+}
+
+.quiz-result h2{
+  font-size:2.2rem;
+  margin-bottom:8px;
+}
+
+
+

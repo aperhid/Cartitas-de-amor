@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartas para mi amado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+  <header class="toolbar">
+    <h1 class="toolbar-title">Ábrela cuando...</h1>
+  </header>
+
+  <div class="envelopes-grid" id="grid"></div>
+</div>
+
+<!-- Modal carta -->
+<div class="modal-bg" id="letter-modal">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal letter-modal">
+    <h2 id="letter-title"></h2>
+
+    <div class="letter-paper" id="letter-body"></div>
+
+    <div class="letter-from" id="letter-date"></div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeLetter()">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<div class="modal-bg" id="locked-modal">
+  <div class="modal-backdrop" onclick="closeLocked()"></div>
+
+  <div class="modal">
+    <h2>🔒 Carta bloqueada</h2>
+
+    <div class="letter-paper" id="locked-message">
+      
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeLocked()">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
